@@ -23,6 +23,7 @@ ext {
 
 dependencies {
     implementation 'org.springframework.shell:spring-shell-starter'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

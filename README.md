@@ -3,7 +3,7 @@ A simple command-line ToDo application written in Java, featuring task managemen
 ---
 
 ## URL
-Project URL: https://github.com/imemirhan/springtodo
+Project URL: https://roadmap.sh/projects/task-tracker
 
 ---
 

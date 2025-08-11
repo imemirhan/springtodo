@@ -2,6 +2,8 @@ package com.todo.todoproj.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.todo.todoproj.model.Task;
 import com.todo.todoproj.model.TaskStatusEnum;
 import org.jline.utils.Log;
@@ -15,7 +17,9 @@ import java.util.Optional;
 public class TaskService {
     private final List<Task> tasks = new ArrayList<>();
     private Long nextId = 1L;
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper()
+            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+            .setDateFormat(new StdDateFormat());
     private final File storageFile = new File("tasks.json");
 
     public TaskService() {

@@ -45,42 +45,58 @@ You will see the command prompt:
   Commands: [add <desc>] [list] [donelist] [undonelist] [inprogresslist] [done <id>] [progress <id>] [update "id" "new description"] [delete <id>] [exit]
   >
    ```
-Commands
-add <description>: Add a new task
+## Commands
 
-list: List all tasks with status icons
+- **add `<description>`**  
+  Add a new task with the given description.
 
-donelist: List completed tasks
+- **list**  
+  List all tasks with status icons indicating their state.
 
-undonelist: List tasks not yet completed
+- **donelist**  
+  List all completed tasks.
 
-inprogresslist: List tasks in progress
+- **undonelist**  
+  List tasks that are not yet completed.
 
-done <id>: Mark a task as completed
+- **inprogresslist**  
+  List tasks currently in progress.
 
-progress <id>: Mark a task as in progress
+- **done `<id>`**  
+  Mark the task with the specified ID as completed.
 
-update "id" "new description": Update the description of a task by ID (both parameters in quotes)
+- **progress `<id>`**  
+  Mark the task with the specified ID as in progress.
 
-delete <id>: Delete a task by ID
+- **update `"id" "new description"`**  
+  Update the description of a task by ID (both parameters must be enclosed in quotes).
 
-exit: Exit the application
+- **delete `<id>`**  
+  Delete the task with the specified ID.
 
-Data Persistence
-Tasks are saved to tasks.json in the project root after each change.
+- **exit**  
+  Exit the application.
 
-Dates (createdAt and updatedAt) are stored as human-readable ISO-8601 strings.
+---
 
-On startup, tasks are loaded from the JSON file if it exists.
+## Data Persistence
 
-Dependencies
-Jackson Databind — for JSON serialization and deserialization
+- Tasks are saved to a `tasks.json` file in the project root directory after each change.
+- Dates (`createdAt` and `updatedAt`) are stored as human-readable ISO-8601 formatted strings.
+- On startup, tasks are loaded from the JSON file if it exists.
 
-JLine — for CLI logging (optional)
+---
 
-Code Highlights
-Task class includes fields for id, description, status, createdAt, and updatedAt.
+## Dependencies
 
-TaskService handles task operations and JSON file read/write with date formatting configured.
+- **Jackson Databind** — for JSON serialization and deserialization  
+- **JLine** — for CLI logging (optional)
 
-CommandLineApp provides the interactive CLI and parses commands.
+---
+
+## Code Highlights
+
+- The `Task` class contains fields for `id`, `description`, `status`, `createdAt`, and `updatedAt`.
+- `TaskService` handles all task operations and manages JSON file reading/writing with proper date formatting.
+- `CommandLineApp` provides the interactive command-line interface and parses user commands.
+

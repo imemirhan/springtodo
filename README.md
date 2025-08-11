@@ -2,6 +2,11 @@ A simple command-line ToDo application written in Java, featuring task managemen
 
 ---
 
+## URL
+Project URL: https://github.com/imemirhan/springtodo
+
+---
+
 ## Features
 
 - Add, list, update, delete tasks

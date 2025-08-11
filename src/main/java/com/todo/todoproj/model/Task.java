@@ -34,6 +34,17 @@ public class Task {
         return true;
     }
 
+    public boolean changeDescription(String description) {
+        try {
+            this.description = description;
+        }
+        catch (Exception ex) {
+            Log.error("An error occurred changing the description of the task.", ex.getMessage());
+            return false;
+        }
+        return true;
+    }
+
     public void setCompleted() {
         this.status = TaskStatusEnum.Completed;
     }

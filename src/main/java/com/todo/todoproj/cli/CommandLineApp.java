@@ -34,6 +34,31 @@ public class CommandLineApp implements CommandLineRunner {
                     }
                     break;
 
+                case "update":
+                    if (command.length < 2 || command[1].trim().isEmpty()) {
+                        System.out.println("⚠️ Please provide the task ID and new description in quotes.");
+                    } else {
+                        String inputs = command[1].trim();
+                        // Regex to match two quoted parts
+                        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\"([^\"]*)\"\\s+\"([^\"]*)\"");
+                        java.util.regex.Matcher matcher = pattern.matcher(inputs);
+
+                        if (matcher.matches()) {
+                            try {
+                                Long id = Long.parseLong(matcher.group(1));
+                                String newDescription = matcher.group(2);
+
+                                boolean updated = taskService.updateTask(id, newDescription);
+                                System.out.println(updated ? "✅ Task updated." : "❌ Task not found.");
+                            } catch (NumberFormatException e) {
+                                System.out.println("⚠️ Invalid task ID.");
+                            }
+                        } else {
+                            System.out.println("⚠️ Invalid format. Use: update \"id\" \"new description\"");
+                        }
+                    }
+                    break;
+
                 case "list":
                     System.out.println("\n📋 All Tasks:");
                     for (Task task : taskService.getAllTasks()) {

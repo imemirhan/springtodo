@@ -63,6 +63,24 @@ public class TaskService {
         return false;
     }
 
+    public boolean updateTask(long id, String description) {
+        Optional<Task> task = tasks.stream()
+                .filter(t -> t.getId().equals(id))
+                .findFirst();
+
+        if(task.isPresent()) {
+            boolean success = task.get().changeDescription(description);
+            if (success) {
+                Log.info("Task successfully updated");
+                saveTasks();
+                return true;
+            }
+        } else {
+            Log.error("No task found with id " + id);
+        }
+        return false;
+    }
+
     public boolean deleteTask(Long id) {
         boolean removed = tasks.removeIf(t -> t.getId().equals(id));
         if (removed) saveTasks();

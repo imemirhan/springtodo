@@ -90,8 +90,6 @@ You will see the command prompt:
 ## Dependencies
 
 - **Jackson Databind** — for JSON serialization and deserialization  
-- **JLine** — for CLI logging (optional)
-
 ---
 
 ## Code Highlights
